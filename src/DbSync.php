@@ -68,9 +68,9 @@ class DbSync {
         $syncConfig or $syncConfig = new ColumnConfiguration([], []);
         $compareConfig or $compareConfig = new ColumnConfiguration([], []);
 
-        $syncColumns = $syncConfig->getIntersection($tableColumns, $primaryKey);
+        $syncColumns = $syncConfig->getIntersection($tableColumns);
 
-        $compareConfig = $compareConfig->getIntersection($syncColumns, $primaryKey);
+        $compareConfig = $compareConfig->getIntersection($syncColumns);
 
         $hash = $this->transferInterface->getHashStrategy()->getHashSelect($source->columnize($compareConfig));
 
